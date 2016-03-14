@@ -1,0 +1,96 @@
+/*Загальні стилі для всієї сторінки*/
+
+@font-face {
+  font-family: comic;
+  src: url("../fonts/comic.ttf");
+}
+/*
+body {
+  font-family: 'Merriweather',serif;
+  font-size: 16px;
+}
+*/
+select, select.form-control{
+  width: auto;
+}
+/*
+.btn, .navbar, select, select.form-control {
+  border-radius: 0
+}
+*/
+main {
+  min-height: calc(100% - 60px);
+}
+
+.results-block{
+  margin-bottom: 15px;
+}
+/*
+header.navbar {
+  background-color: #455a64;
+}
+*/
+.navbar {
+  border: none;
+}
+
+header h1{
+  color: #13daec;
+
+  font-family: comic, cursive;
+  font-weight: 300;
+  text-shadow: 0px 1px 0px #050058;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+.control-label{
+  text-align: left !important;
+  font-weight: normal;
+}
+
+.matrix, .groups-block, .connected-groups-block, .groups-with-modules-block {
+  padding: 2px 15px;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.matrix table {
+  margin: 0;
+}
+
+.matrix th, .groups-block th, .connected-groups-block th, .groups-with-modules-block th{
+  /*background-color: #d9edf7;*/
+  text-align: center;
+  padding: 8px;
+}
+
+.matrix td.input-cell {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.matrix input {
+  text-align: center;
+  padding: 1px 3px;
+  width: 45px;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+footer {
+  margin: 0 auto;
+}
+
+footer .navbar {
+  margin: 0 auto;
+}
+
+@media (max-width: 970px) {
+  .results-block{
+    border-top: 1px dotted gray;
+    padding-top: 10px;
+  }
+}

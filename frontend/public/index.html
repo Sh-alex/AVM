@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<head lang="uk">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Лабораторна робота з ГКС4 №1</title>
+    <meta name="description" content="Лабораторна робота з ГКС4 №1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href='./build/style.css' rel='stylesheet' type='text/css'>-->
+    <link href='./vendor/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div id="mount-point" class="wrapper">
+    <header class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <h1 class="text-center"> Лабораторна робота з ГКС2 №6 </h1>
+        </div>
+    </header>
+
+    <main class="container-fluid">
+        <div class="row">
+            <div class="content-row-wrapper input-column col-xs-12 col-md-6">
+                <div class="row">
+
+                    <div class="input-block col-xs-12">
+                        <form name="lab1-inp-form" class="form-horizontal">
+                            <strong> Оберіть необхідний вам розмір матриці:</strong>
+                            <div class="form-group">
+                                <label for="inp-num-of-rows" class="col-sm-6 control-label">Кількість рядків:</label>
+                                <div class="col-sm-6">
+                                    <select id="inp-num-of-rows" class="form-control">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5" selected="">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inp-num-of-cols" class="col-sm-6 control-label"> Максимальна кількість стовпців:</label>
+                                <div class="col-sm-6">
+                                    <select id="inp-num-of-cols" class="form-control">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5" selected="">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <strong>Введіть значення матриці:</strong>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="matrix inp-matrix" id="inp-matrix-1"><div class="table-responsive">
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                            <tr><th> № </th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td></tr><tr><th>2</th><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td></tr><tr><th>3</th><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td></tr><tr><th>4</th><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td><td class="input-cell"> <input type="text" pattern="[\w,а-я,А-Я,і,ї]{0,4}" title="Введіть назви, що складаються з числел та букв довжиною до 4 символів" value=""> </td></tr></tbody></table> </div></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-default">Порахувати</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content-row-wrapper results-column col-xs-12 col-md-6">
+                <div class="row">
+
+                    <div class="results-block col-xs-12">
+                        <p><strong>Кількість унікальних елементів: </strong><span id="num-of-unique">8</span></p>
+                        <p><strong>Матриця результатів:</strong></p>
+                        <div class="matrix res-matrix" id="res-matrix-1"><div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <tbody><tr><th> № </th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><th>1</th><td><span class="matrix-result-cell"> 0 </span></td><td><span class="matrix-result-cell"> 5 </span></td><td><span class="matrix-result-cell"> 6 </span></td><td><span class="matrix-result-cell"> 5 </span></td></tr><tr><th>2</th><td><span class="matrix-result-cell"> 5 </span></td><td><span class="matrix-result-cell"> 0 </span></td><td><span class="matrix-result-cell"> 3 </span></td><td><span class="matrix-result-cell"> 4 </span></td></tr><tr><th>3</th><td><span class="matrix-result-cell"> 6 </span></td><td><span class="matrix-result-cell"> 3 </span></td><td><span class="matrix-result-cell"> 0 </span></td><td><span class="matrix-result-cell"> 3 </span></td></tr><tr><th>4</th><td><span class="matrix-result-cell"> 5 </span></td><td><span class="matrix-result-cell"> 4 </span></td><td><span class="matrix-result-cell"> 3 </span></td><td><span class="matrix-result-cell"> 0 </span></td></tr></tbody></table> </div></div>
+                    </div>
+
+                    <div class="results-block col-xs-12">
+                        <p><strong>Групи елементів:</strong></p>
+                        <div class="groups-block" id="groups-block-1"><table class="table table-bordered groups">
+                            <tbody><tr>
+                                <th> № групи </th>
+                                <th> Елементи групи </th>
+                                <!--th> -----Для перевірки правильності робооти-----
+                                Координати елементів групи </th-->
+                                <th> Відповідні операції </th>
+                            </tr>
+                            <tr>
+                                <td> 1 </td>
+                                <td> 1, 3 </td>
+                                <!--td> (1,3), (1,3) </td-->
+                                <td> a, b, c, d, e, k </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> 2, 4 </td>
+                                <!--td> (1,2), (1,4) </td-->
+                                <td> a, b, c, e, f, j </td>
+                            </tr></tbody></table></div>
+                    </div>
+
+                    <div class="results-block col-xs-12">
+                        <p><strong>Впорядковані групи:</strong></p>
+                        <div class="connected-groups-block" id="connected-groups-block-1"><table class="table table-bordered">
+                            <tbody><tr>
+                                <th> № групи </th>
+                                <th> Елементи групи </th>
+                                <th> Відповідні операції </th>
+                            </tr><tr>
+                                <td>1</td>
+                                <td>
+                                    1, 3
+                                </td>
+                                <td>
+                                    a, b, c, d, e, k
+                                </td>
+                            </tr><tr>
+                                <td>2</td>
+                                <td>
+                                    2, 4
+                                </td>
+                                <td>
+                                    a, b, c, e, f, j
+                                </td>
+                            </tr></tbody></table></div>
+                    </div>
+
+                    <div class="results-block col-xs-12">
+                        <p><strong>Групи з відповідними модулями:</strong></p>
+                        <div class="groups-with-modules-block" id="groups-with-modules-block-1"><table class="table table-bordered">
+                            <tbody><tr>
+                                <th> № групи </th>
+                                <th> № модуля </th>
+                                <th> Відповідні операції </th>
+                            </tr><tr><td rowspan="4">
+                                <span class="group-num"> 1 </span>
+                                <button type="button" class="btn btn-default btn-show-graph" data-toggle="modal" data-group-num="0" data-target="#graphCorouselModal" aria-label="ShowGraph" title="Показати граф для цієї групи">
+                                    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                </button>
+                            </td><td> 1 </td>
+                                <td> a </td>
+                            </tr><tr><td> 2 </td>
+                                <td> d, c, b </td>
+                            </tr><tr><td> 3 </td>
+                                <td> e </td>
+                            </tr><tr><td> 4 </td>
+                                <td> k </td>
+                            </tr><tr><td rowspan="6">
+                                <span class="group-num"> 2 </span>
+                                <button type="button" class="btn btn-default btn-show-graph" data-toggle="modal" data-group-num="1" data-target="#graphCorouselModal" aria-label="ShowGraph" title="Показати граф для цієї групи">
+                                    <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                                </button>
+                            </td><td> 1 </td>
+                                <td> a </td>
+                            </tr><tr><td> 2 </td>
+                                <td> b </td>
+                            </tr><tr><td> 3 </td>
+                                <td> c </td>
+                            </tr><tr><td> 4 </td>
+                                <td> f </td>
+                            </tr><tr><td> 5 </td>
+                                <td> e </td>
+                            </tr><tr><td> 6 </td>
+                                <td> j </td>
+                            </tr></tbody></table></div>
+                    </div>
+
+                    <div class="results-block col-xs-12">
+                        <p><strong> Впорядковані модулі до оптимізації: </strong></p>
+                        <div class="groups-block" id="ordered-modules-block-1"><table class="table table-bordered groups">
+                            <tbody><tr>
+                                <th> № модуля </th>
+                                <th> Відповідні операції </th>
+                            </tr>
+                            <tr>
+                                <td> 1 </td>
+                                <td> a </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> a </td>
+                            </tr>
+                            <tr>
+                                <td> 3 </td>
+                                <td> b </td>
+                            </tr>
+                            <tr>
+                                <td> 4 </td>
+                                <td> c </td>
+                            </tr>
+                            <tr>
+                                <td> 5 </td>
+                                <td> e </td>
+                            </tr>
+                            <tr>
+                                <td> 6 </td>
+                                <td> e </td>
+                            </tr>
+                            <tr>
+                                <td> 7 </td>
+                                <td> f </td>
+                            </tr>
+                            <tr>
+                                <td> 8 </td>
+                                <td> j </td>
+                            </tr>
+                            <tr>
+                                <td> 9 </td>
+                                <td> k </td>
+                            </tr>
+                            <tr>
+                                <td> 10 </td>
+                                <td> d, c, b </td>
+                            </tr></tbody></table></div>
+                    </div>
+
+                    <div class="results-block col-xs-12">
+                        <p><strong> Оптимізовані модулі: </strong></p>
+                        <div class="groups-block" id="optimized-modules-block-1"><table class="table table-bordered groups">
+                            <tbody><tr>
+                                <th> № модуля </th>
+                                <th> Відповідні операції </th>
+                            </tr>
+                            <tr>
+                                <td> 1 </td>
+                                <td> a </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> e </td>
+                            </tr>
+                            <tr>
+                                <td> 3 </td>
+                                <td> f </td>
+                            </tr>
+                            <tr>
+                                <td> 4 </td>
+                                <td> j </td>
+                            </tr>
+                            <tr>
+                                <td> 5 </td>
+                                <td> k </td>
+                            </tr>
+                            <tr>
+                                <td> 6 </td>
+                                <td> d, c, b </td>
+                            </tr></tbody></table></div>
+                    </div>
+
+                    <div class="results-block col-xs-12">
+                        <p>
+                            <strong> Технологічна структура: </strong>
+                            <button id="btn-draw-tech-structure-graph" type="button" class="btn btn-default" data-toggle="modal" data-target="#graphCorouselModal" aria-label="ShowGraph" title="Показати граф технологічної структури зі шляхами всіх рядків операцій">
+                                <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                            </button>
+                        </p>
+                        <p>
+                            <strong> Кількість зворотніх зв'язків: </strong>
+                            <span id="num-of-inverse-connections">0</span>
+                        </p>
+                        <p><strong>Розташування модулів:</strong></p>
+                        <div class="groups-block" id="tech-structure-modules-block-1"><table class="table table-bordered groups">
+                            <tbody><tr>
+                                <th> № модуля - Відповідні операції </th>
+                            </tr>
+                            <tr>
+                                <td> Start </td>
+                            </tr>
+                            <tr>
+                                <td> 1 - a </td>
+                            </tr>  <tr>
+                                <td> 2 - d, c, b </td>
+                            </tr>  <tr>
+                                <td> 3 - e </td>
+                            </tr>  <tr>
+                                <td> 4 - j </td>
+                            </tr>  <tr>
+                                <td> 5 - k </td>
+                            </tr>  <tr>
+                                <td> 6 - f </td>
+                            </tr>      <tr>
+                                <td> Finish </td>
+                            </tr>
+                            </tbody></table></div>
+                        <p><strong> Шляхи проходження по модулям: </strong></p>
+                        <div class="groups-block" id="tech-structure-ways-block-1"><table class="table table-bordered groups">
+                            <tbody><tr>
+                                <th>№ рядка операцій </th>
+                                <th>Шляхи проходження по модулям </th>
+                            </tr>
+                            <tr>
+                                <td> 1 </td>
+                                <td> Start → 1 → 2 → 3 → Finish </td>
+                            </tr>
+                            <tr>
+                                <td> 2 </td>
+                                <td> Start → 1 → 2 → 6 → Finish </td>
+                            </tr>
+                            <tr>
+                                <td> 3 </td>
+                                <td> Start → 1 → 2 → 3 → 5 → Finish </td>
+                            </tr>
+                            <tr>
+                                <td> 4 </td>
+                                <td> Start → 2 → 3 → 4 → Finish </td>
+                            </tr></tbody></table></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="navbar navbar-default">
+            <p class="navbar-text text-center">
+                <a href="https://vk.com/max_genash" class="navbar-link">Генаш Максим</a>,
+                <a href="https://vk.com/id52117585" class="navbar-link">Шевченко Олександр</a>
+                &copy; 2016
+            </p>
+        </div>
+    </footer>
+</div>
+
+<script type="text/javascript" src="build/bundle.js"></script>
+</body>
+</html>
