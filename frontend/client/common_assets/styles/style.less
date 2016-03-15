@@ -9,88 +9,184 @@ body {
   font-family: 'Merriweather',serif;
   font-size: 16px;
 }
-*/
-select, select.form-control{
-  width: auto;
-}
-/*
+
 .btn, .navbar, select, select.form-control {
   border-radius: 0
 }
 */
-main {
+
+
+
+
+header {
+  /*
+    background-color: #455a64;
+  */
+
+  h1{
+    color: #13daec;
+    font-family: comic, cursive;
+    font-weight: 300;
+    text-shadow: 0px 1px 0px #050058;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+  }
+}
+
+
+
+.main-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   min-height: calc(100% - 60px);
 }
 
-.results-block{
-  margin-bottom: 15px;
-}
-/*
-header.navbar {
-  background-color: #455a64;
-}
-*/
-.navbar {
-  border: none;
+  .input-column, .results-column {
+    max-width: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+    .results-block, .input-block {
+      max-width: 100%;
+    }
+
+    .results-block{
+      margin-bottom: 15px;
+
+      .res-matrix {
+
+        .res-matrix__table-wrapper{
+          padding: 2px 15px;
+
+          .res-matrix__table {
+            margin: 0;
+
+            .res-matrix__row {
+
+              .res-matrix th {
+                /*background-color: #d9edf7;*/
+                text-align: center;
+                padding: 8px;
+              }
+              .res-matrix td {
+
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+
+.inp-num-of-vars {
+  .inp-num-of-vars__label {
+    width: 15em;
+  }
+
+  .inp-num-of-vars__select {
+    display: inline;
+    width: auto;
+  }
 }
 
-header h1{
-  color: #13daec;
+.inp-matrix {
 
-  font-family: comic, cursive;
-  font-weight: 300;
-  text-shadow: 0px 1px 0px #050058;
-  letter-spacing: -2px;
-  text-transform: uppercase;
+  .inp-matrix__table-wrapper {
+    overflow-y: hidden;
+
+    .inp-matrix__table {
+      margin: 0;
+      width: auto;
+
+      .inp-matrix__row {
+
+        .inp-matrix__cell {
+          margin: 0;
+          vertical-align: middle !important;
+          padding: 8px 8px 0 0 !important;
+
+          .inp-matrix__input {
+            height: auto;
+            text-align: center;
+            padding: 1px 3px;
+            width: 5em;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+          }
+
+          .inp-matrix__text {
+
+          }
+
+          .inp-matrix__select {
+            height: auto;
+            border: none;
+            width: auto;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }
 
-.control-label{
-  text-align: left !important;
-  font-weight: normal;
+.opt-func {
+
+  .opt-func__table-wrapper {
+    overflow-y: hidden;
+
+    .opt-func__table {
+      margin: 0;
+      width: auto;
+
+      .opt-func__row {
+
+        .opt-func__cell {
+          margin: 0;
+          vertical-align: middle !important;
+          padding: 8px 8px 0 0 !important;
+
+          .opt-func__input {
+            height: auto;
+            text-align: center;
+            padding: 1px 3px;
+            width: 5em;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+          }
+
+          .opt-func__text {
+
+          }
+
+          .opt-func__select-criterion {
+            height: auto;
+            border: none;
+            width: auto;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }
 
-.matrix, .groups-block, .connected-groups-block, .groups-with-modules-block {
-  padding: 2px 15px;
-  display: inline-block;
-  max-width: 100%;
-}
-
-.matrix table {
-  margin: 0;
-}
-
-.matrix th, .groups-block th, .connected-groups-block th, .groups-with-modules-block th{
-  /*background-color: #d9edf7;*/
-  text-align: center;
-  padding: 8px;
-}
-
-.matrix td.input-cell {
-  margin: 0;
-  padding: 0;
-  vertical-align: middle;
-}
-
-.matrix input {
-  text-align: center;
-  padding: 1px 3px;
-  width: 45px;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-}
 
 footer {
   margin: 0 auto;
-}
 
-footer .navbar {
-  margin: 0 auto;
-}
+  .navbar {
+    margin: 0 auto;
+    border-radius: 0;
 
-@media (max-width: 970px) {
-  .results-block{
-    border-top: 1px dotted gray;
-    padding-top: 10px;
+    .text-center {
+      float: none;
+    }
   }
 }
