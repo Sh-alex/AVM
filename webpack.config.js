@@ -1,9 +1,9 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./client/main.jsx",
+    entry: "./frontend/client/main.jsx",
     output: {
-        path: __dirname + '/public/build/',
+        path: __dirname + '/frontend/public/build/',
         publicPath: "build/",
         filename: "bundle.js"
     },
