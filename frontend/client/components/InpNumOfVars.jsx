@@ -3,6 +3,12 @@ import React from 'react';
 import './InpNumOfVars.less';
 
 const InpNumOfVars = React.createClass({
+    handleVarsChange() {
+        this.props.onVarsChange(
+            this.refs.selectNumOfX.value,
+            this.refs.selectNumOfRestrictions.value
+        );
+    },
     render() {
         return (
             <div className="inp-num-of-vars">
@@ -10,8 +16,13 @@ const InpNumOfVars = React.createClass({
                     <label className="control-label inp-num-of-vars__label">
                         <strong>Кількість змінних:</strong>
                     </label>
-                    <select className="form-control inp-num-of-vars__select select-num-x">
-                        <option value="2" selected>2</option>
+                    <select
+                        value={this.props.numOfX}
+                        className="form-control inp-num-of-vars__select select-num-x"
+                        onChange={this.handleVarsChange}
+                        ref="selectNumOfX"
+                    >
+                        <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
@@ -26,9 +37,14 @@ const InpNumOfVars = React.createClass({
                     <label className="control-label inp-num-of-vars__label">
                         <strong>Кількість обмежень:</strong>
                     </label>
-                    <select className="form-control inp-num-of-vars__select select-num-restrictions">
+                    <select 
+                        value={this.props.numOfRestrictions} 
+                        className="form-control inp-num-of-vars__select select-num-restrictions"
+                        onChange={this.handleVarsChange}
+                        ref="selectNumOfRestrictions"
+                    >
                         <option value="2">2</option>
-                        <option value="3" selected>3</option>
+                        <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
