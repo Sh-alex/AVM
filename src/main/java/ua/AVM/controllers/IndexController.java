@@ -1,23 +1,32 @@
 package ua.AVM.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
+import ua.AVM.simplex.impl.SimplexMethod;
 
 
 @Controller
 public class IndexController {
+    @Autowired
+    private SimplexMethod simplexMethod;
 
-    @RequestMapping(value = "/index.html", method = RequestMethod.GET)
-    public ModelAndView goIndex() {
-        String start = "Start!";
+    @RequestMapping(value = "/solveSimplex", method = RequestMethod.POST, headers = "Accept=application/json", produces = "application/json")
+    @ResponseBody
+    public SimplexMethod sendResult() {
 
-        /*ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("start", start);
-        modelAndView.setViewName("index");
-        return modelAndView;*/
-        return new ModelAndView("index", "start", start);
+        simplexMethod.createSimplexTable(4, 4);
+        simplexMethod.solve();
+
+        return simplexMethod;
+    }
+
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseBody
+    public BadStatus sendNoSolution() {
+
+        return new BadStatus("Задача розв'язку немає");
     }
 
 }

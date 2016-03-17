@@ -1,37 +1,68 @@
 package ua.AVM.simplex.impl;
 
+import org.springframework.stereotype.Component;
 import ua.AVM.simplex.interfaces.Simplex;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
+@Component
 public class SimplexMethod implements Simplex {
 
     private List<String> basicVariables;
     private List<String> notBasicVariables;
-    private Set<String> setVariables;
 
     /**
      * Початкова симплекс таблиця, де останній рядок - цільова функція,
      *               а останній стовпець - вільні члени
      */
-    private List<List<Double>> matrix;
+    private List<List<Float>> matrix;
 
+    public List<List<Float>> getMatrix() {
+        return matrix;
+    }
+
+    public List<String> getBasicVariables() {
+        return basicVariables;
+    }
+
+    public List<String> getNotBasicVariables() {
+        return notBasicVariables;
+    }
 
     @Override
-    public List<List<Double>> createSimplexTable() {
-        matrix = new ArrayList<>();
-        return null;
+    public List<List<Float>> createSimplexTable(int numVar, int numRestriction) {
+        /*matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f,-2f,1f), Arrays.asList(-2f,1f,2f),
+                Arrays.asList(2f,1f,6f), Arrays.asList(-3f, -1f, 0f)));*/
+        /* matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f, 0f, 1f, 0f, 2f), Arrays.asList(0f, 1f, 0f, 1f, 5f),
+                Arrays.asList(-5f, -10f, 0f, 0f,-25f),Arrays.asList(0f, 0f, -5f, -10f,-40f),
+                 Arrays.asList(-20f, -25f, -15f, -20f, 0f)));*/
+          /*matrix = new ArrayList<>(Arrays.asList(Arrays.asList(0.1f, 0.3f, 0f,17f), Arrays.asList(0.4f, 0.1f, 0f,11f),
+                Arrays.asList(0.2f, 0.2f, 0f,13f),Arrays.asList(-6f, -5f, 0f, 0f)));*/
+        matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f, 1f, 0f,0f,8f), Arrays.asList(0f, 0f, 1f,1f,12f),
+                Arrays.asList(-60f, 0f, -40f,0f,-240f),Arrays.asList(0f, -60f, 0f, -40f,-180f),
+                Arrays.asList(310f, 380f, 420f, 480f,0f)));
+
+        basicVariables = new ArrayList<>();
+        notBasicVariables = new ArrayList<>();
+
+        for (int i = 0; i < numRestriction; i++) {
+            basicVariables.add("u" + (i+1));
+        }
+        basicVariables.add("F");
+        for (int i = 0; i < numVar; i++) {
+            notBasicVariables.add("x" + (i+1));
+        }
+        notBasicVariables.add("B");
+        return matrix;
     }
     /**
      *Робить одну ітерацію симплекс перетворення(якщо дане рішення недопустиме)
-     * @param matrix Початкова симплекс таблиця, де останній рядок - цільова функція,
-     *               а останній стовпець - вільні члени
      * @return Булеве значення допустимості розв'язку
      */
     @Override
-    public Boolean checkPermissibility(List<List<Double>> matrix) {
+    public Boolean checkPermissibility() {
 
         int row = -1;//Ведучий рядок
         int col = -1;//Ведучий стовпець
@@ -55,12 +86,12 @@ public class SimplexMethod implements Simplex {
                 col = j;
             }
         }
-        /*if(col == -1) {
-            throw new IllegalArgumentException();
-        }*/
+        if(col == -1) {
+            throw new IllegalArgumentException("Задача розв'язку немає");
+        }
 
         //Перераховую таблицю (row і col - індекси ведучого елемента)
-        transformationTable(row, col, matrix);
+        transformationTable(row, col);
 
         //Нове рішення допустиме?
         for (int i = 0; i < matrix.size() - 1; i++) {
@@ -79,11 +110,14 @@ public class SimplexMethod implements Simplex {
      *
      * @param row Індекс рядка ведучого елементу
      * @param col Індекс стовпця ведучого елементу
-     * @param matrix Початкова симплекс таблиця, де останній рядок - цільова функція,
-     *               а останній стовпець - вільні члени
      */
-    private void transformationTable(int row, int col, List<List<Double>> matrix) {
-        List<List<Double>> newMatrix = new ArrayList<>();
+    private void transformationTable(int row, int col) {
+        //Міняю місцями базисну й небазисну змінну
+        String temp =  basicVariables.get(row);
+        basicVariables.set(row, notBasicVariables.get(col));
+        notBasicVariables.set(col, temp);
+
+        List<List<Float>> newMatrix = new ArrayList<>();
         //Копіюю елементи
         for (int i = 0; i < matrix.size(); i++) {
             newMatrix.add(new ArrayList<>());
@@ -124,12 +158,10 @@ public class SimplexMethod implements Simplex {
 
     /**
      *Робить одну ітерацію симплекс перетворення(якщо дане рішення неоптимальне)
-     * @param matrix Початкова симплекс таблиця, де останній рядок - цільова функція,
-     *               а останній стовпець - вільні члени
      * @return Булеве значення оптимальності розв'язку
      */
     @Override
-    public Boolean checkOptimality(List<List<Double>> matrix) {
+    public Boolean checkOptimality() {
         int row = -1;//Ведучий рядок
         int col = -1;//Ведучий стовпець
         double minElementInCol = 1000000000;
@@ -152,7 +184,7 @@ public class SimplexMethod implements Simplex {
 
         if (row == -1) throw new IllegalArgumentException("Задача розв'язку не має");
 
-        transformationTable(row, col, matrix);
+        transformationTable(row, col);
 
         //Нове рішення оптимальне?
         for (int j = 0; j < matrix.get(matrix.size() - 1).size() - 1; j++) {
@@ -165,23 +197,21 @@ public class SimplexMethod implements Simplex {
     }
 
     /**
-     * @param matrix Початкова симплекс таблиця, де останній рядок - цільова функція,
-     *               а останній стовпець - вільні члени
      * @return Матрицю розв'язку симплекс методом
      */
     @Override
-    public List<List<Double>> getResult(List<List<Double>> matrix) {
+    public List<List<Float>> solve() {
 
         Boolean permissibility = false;
 
         while (!permissibility) {
-            permissibility = checkPermissibility(matrix);
+            permissibility = checkPermissibility();
         }
 
 
         Boolean optimality = false;
         while (!optimality) {
-            optimality =checkOptimality(matrix);
+            optimality = checkOptimality();
         }
 
         return matrix;

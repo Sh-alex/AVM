@@ -4,12 +4,14 @@ import java.util.List;
 
 public interface Simplex {
 
-    List<List<Double>> createSimplexTable();//TODO Визначити список параметрів(як считувати з front-end)
+    List<List<Float>> createSimplexTable(int numVar, int numRestriction);//TODO Визначити список параметрів(як считувати з front-end)
+    /*List<List<Float>> createSimplexTable(List<List<Float>> A, List<Float> B, List<Float> C,
+                                         String optCriterion, List<String> inequalityTypes,
+                                         int numVar, int numRestriction);*/
 
+    Boolean checkPermissibility();
 
-    Boolean checkPermissibility(List<List<Double>> matrix);
+    Boolean checkOptimality();
 
-    Boolean checkOptimality(List<List<Double>> matrix);
-
-    List<List<Double>> getResult(List<List<Double>> matrix);
+    List<List<Float>> solve();
 }
