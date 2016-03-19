@@ -24,7 +24,6 @@ public class SimplexMethodTest {
 
 
         SimplexMethod sm = new SimplexMethod();
-        sm.createSimplexTable(2, 3);
 
         sm.checkPermissibility();
 
@@ -34,7 +33,6 @@ public class SimplexMethodTest {
     @Test
     public void testCheckOptimality() throws Exception {
         SimplexMethod sm = new SimplexMethod();
-        sm.createSimplexTable(2, 3);
 
         sm.checkOptimality();
 
@@ -48,7 +46,6 @@ public class SimplexMethodTest {
     @Test
     public void testSolve() throws Exception {
         SimplexMethod sm = new SimplexMethod();
-        sm.createSimplexTable(2, 3);
 
         sm.solve();
 

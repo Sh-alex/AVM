@@ -11,11 +11,18 @@ public class IndexController {
     @Autowired
     private SimplexMethod simplexMethod;
 
-    @RequestMapping(value = "/solveSimplex", method = RequestMethod.POST, headers = "Accept=application/json", produces = "application/json")
-    @ResponseBody
-    public SimplexMethod sendResult() {
+    @RequestMapping(value = "/index.html", method = RequestMethod.GET)
+    public String goIndex() {
 
-        simplexMethod.createSimplexTable(4, 4);
+        return  "index";
+    }
+
+    @RequestMapping(value = "/solveSimplex", method = RequestMethod.POST, consumes = "application/json")
+    @ResponseBody
+    public SimplexMethod sendResult(@RequestBody DataSimplex dataSimplex) {
+
+        simplexMethod.createSimplexTable(dataSimplex.getA(), dataSimplex.getB(), dataSimplex.getC(),
+                dataSimplex.getOptCriterion(), dataSimplex.getInequalityTypes(), dataSimplex.getC().size(), dataSimplex.getA().size());
         simplexMethod.solve();
 
         return simplexMethod;

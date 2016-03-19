@@ -32,17 +32,35 @@ public class SimplexMethod implements Simplex {
     }
 
     @Override
-    public List<List<Float>> createSimplexTable(int numVar, int numRestriction) {
-        /*matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f,-2f,1f), Arrays.asList(-2f,1f,2f),
-                Arrays.asList(2f,1f,6f), Arrays.asList(-3f, -1f, 0f)));*/
-        /* matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f, 0f, 1f, 0f, 2f), Arrays.asList(0f, 1f, 0f, 1f, 5f),
-                Arrays.asList(-5f, -10f, 0f, 0f,-25f),Arrays.asList(0f, 0f, -5f, -10f,-40f),
-                 Arrays.asList(-20f, -25f, -15f, -20f, 0f)));*/
-          /*matrix = new ArrayList<>(Arrays.asList(Arrays.asList(0.1f, 0.3f, 0f,17f), Arrays.asList(0.4f, 0.1f, 0f,11f),
-                Arrays.asList(0.2f, 0.2f, 0f,13f),Arrays.asList(-6f, -5f, 0f, 0f)));*/
-        matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f, 1f, 0f,0f,8f), Arrays.asList(0f, 0f, 1f,1f,12f),
+    public List<List<Float>> createSimplexTable(List<List<Float>> A, List<Float> B, List<Float> C,
+                                                String optCriterion, List<String> inequalityTypes,
+                                                int numVar, int numRestriction) {
+
+       /* matrix = new ArrayList<>(Arrays.asList(Arrays.asList(1f, 1f, 0f,0f,8f), Arrays.asList(0f, 0f, 1f,1f,12f),
                 Arrays.asList(-60f, 0f, -40f,0f,-240f),Arrays.asList(0f, -60f, 0f, -40f,-180f),
-                Arrays.asList(310f, 380f, 420f, 480f,0f)));
+                Arrays.asList(310f, 380f, 420f, 480f,0f)));*/
+
+        //Заповнення симплекс таблиці
+        matrix = new ArrayList<>(A);
+
+
+        int inexB = 0;
+        for (List<Float> sublist: matrix) {
+            sublist.add(B.get(inexB));
+            inexB++;
+        }
+        //Якщо min, то домножую цільову функцію на -1
+        //if(optCriterion.equals("min"))
+        C.replaceAll(element -> element*(-1));
+        C.add(C.size(),0f);
+        matrix.add(new ArrayList<>(C));
+
+        //Якщо знак >= домножую відповідний рядок на -1
+       /* for (int i = 0; i < inequalityTypes.size(); i++){
+            if(inequalityTypes.get(i).equals("below")){
+                matrix.get(i).replaceAll(element -> element*(-1));
+            }
+        }*/
 
         basicVariables = new ArrayList<>();
         notBasicVariables = new ArrayList<>();
@@ -50,6 +68,7 @@ public class SimplexMethod implements Simplex {
         for (int i = 0; i < numRestriction; i++) {
             basicVariables.add("u" + (i+1));
         }
+        //Базисні і небазисні змінні
         basicVariables.add("F");
         for (int i = 0; i < numVar; i++) {
             notBasicVariables.add("x" + (i+1));

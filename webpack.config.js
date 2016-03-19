@@ -1,9 +1,9 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./frontend/client/main.jsx",
+    entry: "/src/main/webapp/resources/src/main.jsx",
     output: {
-        path: __dirname + '/frontend/public/build/',
+        path: __dirname + '/src/main/webapp/resources/dst/build/',
         publicPath: "build/",
         filename: "bundle.js"
     },
@@ -73,5 +73,11 @@ module.exports = {
             'jQuery': "jquery",
             'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         })
-    ]
+    ]/*,
+    devServer: {
+        contentBase: __dirname + '/backend',
+        target: 'https://other-server.example.com',
+        hot: true,
+        port: 8090
+    }*/
 };
