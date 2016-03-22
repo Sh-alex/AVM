@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "/src/main/webapp/resources/src/main.jsx",
+    entry: "./src/main/webapp/resources/src/main.jsx",
     output: {
         path: __dirname + '/src/main/webapp/resources/dst/build/',
         publicPath: "build/",

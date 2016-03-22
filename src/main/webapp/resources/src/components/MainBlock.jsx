@@ -10,8 +10,9 @@ const MainBlock = React.createClass({
         $.ajax({
             url: "/solveSimplex",
             dataType: 'json',
+            contentType: "application/json",
             type: 'POST',
-            data: formData,
+            data: JSON.stringify(formData),
             success: function(data) {
                 console.log("server response:", JSON.stringify(data));
                 if(!data.error && data.matrix && data.notBasicVariables && data.basicVariables)

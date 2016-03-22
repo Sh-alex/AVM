@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "FKS-3_labs",
   "scripts": {
+    "start": "webpack",
     "server": "node server/app.js",
+    "build": "webpack",
     "webpack-devserver": "webpack-dev-server --debug --hot --output-pathinfo--colors --inline --content-base ./frontend/public --port 8090 --host 0.0.0.0"
   },
   "author": {

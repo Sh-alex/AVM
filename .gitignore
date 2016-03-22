@@ -1,4 +1,5 @@
 /AVM.iml
 /target
 /.idea
+/src/main/webapp/resources/dst/build
 node_modules/
