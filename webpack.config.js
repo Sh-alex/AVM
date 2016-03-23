@@ -59,7 +59,7 @@ module.exports = {
             },
             {
                 test:   /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-                loader: 'file?name=[path][name].[ext]?[hash]'
+                loader: 'file?name=[name].[ext]?[hash]'
             },
             {
                 test: /\.json$/,

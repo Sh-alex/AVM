@@ -9,6 +9,10 @@ const InitialDataForm = React.createClass({
         let bVars = this.props.resMatrixData.basicVariables,
             notBVars = this.props.resMatrixData.notBasicVariables,
             matrix = this.props.resMatrixData.matrix;
+        if(!bVars || !notBVars || !matrix)
+            return (<tr className="res-matrix__row">
+                        <td> Таблиця пуста </td>
+                   </tr>);
         return matrix.map( (row, i) => {
             let result = [];
             if(i === 0)

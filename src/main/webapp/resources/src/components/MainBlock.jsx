@@ -32,7 +32,8 @@ const MainBlock = React.createClass({
     },
     getInitialState: function() {
         return {
-            resData: {
+            resData: {}
+            /*{ Приклад того як виглядає
                 "basicVariables":["u1","u2","x1","x2","F"],
                 "notBasicVariables":["u3","u4","x3","x4","B"],
                 "matrix":[
@@ -42,11 +43,13 @@ const MainBlock = React.createClass({
                     [3, 6, 1, 9, 2],
                     [3.3, 23.3, 0, 340, 8]
                 ]
-            }
+            }*/
         }
         ;
     },
     render() {
+        //якщо нема даних - не показуємо блок результатів
+        let emptyState = (!this.state.resData.basicVariables || !this.state.resData.notBasicVariables || !this.state.resData.state.matrix);
         return (
             <main className="container-fluid main-block">
                 <div className="input-column">
@@ -54,7 +57,7 @@ const MainBlock = React.createClass({
                         <InitialDataForm onFormSubmit={this.handleFormSubmit}/>
                     </div>
                 </div>
-                <div className="results-column">
+                <div className={"results-column " + (emptyState ? "hidden" : "")}>
                     <div className="results-block">
                         <ResMatrix resMatrixData={this.state.resData}/>
                     </div>
